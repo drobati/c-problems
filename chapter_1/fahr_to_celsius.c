@@ -1,11 +1,20 @@
 // Derek Robati
 // June 5, 2012
-// Exercise 1-1 and 1-2 completed on this file.
 //
 #include <stdio.h>
 
 /* print Fahrenheit-Celsius table
  * for fahr= 0, 20, ..., 300 */
+
+float fahr_to_celsius(float fahr)
+{
+	return ((5.0/9.0) * (fahr-32.0));
+}
+
+float celsius_to_fahr(float celsius)
+{
+	return (celsius / (5.0/9.0) + 32);
+}
 
 main()
 {
@@ -19,7 +28,7 @@ main()
 	fahr = lower;
 	printf("Fahren\tCelsius\n");
 	while (fahr <= upper) {
-		celsius = (5.0/9.0) * (fahr-32.0);
+		celsius = fahr_to_celsius(fahr);
 		printf("%3.0f %6.1f\n", fahr, celsius);
 		fahr = fahr + step;
 	}
@@ -28,9 +37,10 @@ main()
 	celsius = lower;
 	printf("Celsius\tFahren\n");
 	while (celsius <= upper) {
-		fahr = celsius / (5.0/9.0) + 32;
+		fahr = celsius_to_fahr(celsius);
 		printf("%3.0f %6.1f\n", celsius, fahr);
 		celsius = celsius + step;
 	}
 	printf("\n");
+	return 0;
 }
